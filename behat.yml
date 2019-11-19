@@ -1,0 +1,7 @@
+default:
+  suites:
+    info:
+      paths:
+        - "features"
+      contexts:
+        - Notifier\Tests\Contexts\FeatureContext
