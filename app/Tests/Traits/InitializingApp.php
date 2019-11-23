@@ -1,12 +1,12 @@
 <?php
 
-namespace Notifier\Tests\Traits;
+namespace Grocelivery\Notifier\Tests\Traits;
 
 use Laravel\Lumen\Application;
 
 /**
  * Trait InitializingApp
- * @package Notifier\Tests\Traits
+ * @package Grocelivery\Notifier\Tests\Traits
  */
 trait InitializingApp
 {
@@ -19,6 +19,5 @@ trait InitializingApp
     public function initializedApplication()
     {
         $this->app = require __DIR__.'/../../../bootstrap/app.testing.php';
-        dd(config('app'));
     }
 }

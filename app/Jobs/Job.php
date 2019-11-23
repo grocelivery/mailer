@@ -1,6 +1,6 @@
 <?php
 
-namespace Notifier\Jobs;
+namespace Grocelivery\Notifier\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 
 /**
  * Class Job
- * @package Notifier\Jobs
+ * @package Grocelivery\Notifier\Jobs
  */
 abstract class Job implements ShouldQueue
 {

@@ -1,14 +1,13 @@
 <?php
 
-namespace Notifier\Tests\Contexts;
+namespace Grocelivery\Notifier\Tests\Contexts;
 
 use Behat\Behat\Context\Context;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\HttpFoundation\Request;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
-use Notifier\Tests\Traits\InitializingApp;
-use Notifier\Http\Responses\Response;
+use Grocelivery\Notifier\Tests\Traits\InitializingApp;
+use Grocelivery\HttpUtils\Responses\JsonResponse;
 
 /**
  * Class FeatureContext
@@ -18,7 +17,7 @@ class FeatureContext implements Context
 {
     use InitializingApp;
 
-    /** @var Response */
+    /** @var JsonResponse */
     private $response;
 
     /**

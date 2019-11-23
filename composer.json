@@ -4,9 +4,17 @@
     "keywords": ["framework", "laravel", "lumen"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../http-utils"
+        }
+    ],
     "require": {
         "php": "^7.3",
         "ext-json": "*",
+        "grocelivery/http-utils": "dev-master",
+        "illuminate/mail": "^6.5",
         "laravel/lumen-framework": "^6.0"
     },
     "require-dev": {
@@ -16,12 +24,8 @@
         "phpunit/phpunit": "^8.0"
     },
     "autoload": {
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ],
         "psr-4": {
-            "Notifier\\": "app/"
+            "Grocelivery\\Notifier\\": "app/"
         }
     },
     "autoload-dev": {

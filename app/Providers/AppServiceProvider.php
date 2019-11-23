@@ -1,12 +1,14 @@
 <?php
 
-namespace Notifier\Providers;
+namespace Grocelivery\Notifier\Providers;
 
+use Grocelivery\HttpUtils\Interfaces\JsonResponseInterface;
+use Grocelivery\HttpUtils\Responses\JsonResponse;
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class AppServiceProvider
- * @package Notifier\Providers
+ * @package Grocelivery\Notifier\Providers
  */
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,5 +17,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(JsonResponseInterface::class, JsonResponse::class);
     }
 }

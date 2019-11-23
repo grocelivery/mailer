@@ -1,12 +1,9 @@
 <?php
 
-namespace Notifier\Http\Controllers;
+namespace Grocelivery\Notifier\Http\Controllers;
 
-use Laravel\Lumen\Application;
+use Grocelivery\HttpUtils\Interfaces\JsonResponseInterface as JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
-use Notifier\Exceptions\InternalServerException;
-use Notifier\Http\Responses\Response;
-use Notifier\Interfaces\Http\Responses\ResponseInterface;
 
 /**
  * Class Controller
@@ -14,30 +11,26 @@ use Notifier\Interfaces\Http\Responses\ResponseInterface;
  */
 class Controller extends BaseController
 {
-    /** @var Application */
-    protected $app;
-    /** @var Response */
+    /** @var JsonResponse */
     protected $response;
 
     /**
      * Controller constructor.
-     * @param Application $app
-     * @param Response $response
+     * @param JsonResponse $response
      */
-    public function __construct(Application $app, Response $response)
+    public function __construct(JsonResponse $response)
     {
-        $this->app = $app;
         $this->response = $response;
     }
 
     /**
-     * @return ResponseInterface
+     * @return JsonResponse
      */
-    public function getInfo(): ResponseInterface
+    public function getInfo(): JsonResponse
     {
         return $this->response
             ->add('app', config('app.name'))
             ->add('version', config('app.version'))
-            ->add('framework', $this->app->version());
+            ->add('framework', app()->version());
     }
 }
