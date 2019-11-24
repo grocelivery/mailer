@@ -7,7 +7,7 @@ use PHPUnit\Framework\Assert;
 use Symfony\Component\HttpFoundation\Request;
 use Behat\Gherkin\Node\TableNode;
 use Grocelivery\Notifier\Tests\Traits\InitializingApp;
-use Grocelivery\HttpUtils\Responses\JsonResponse;
+use Grocelivery\Utils\Responses\JsonResponse;
 
 /**
  * Class FeatureContext

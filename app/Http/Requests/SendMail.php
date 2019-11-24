@@ -3,7 +3,7 @@
 
 namespace Grocelivery\Notifier\Http\Requests;
 
-use Grocelivery\HttpUtils\Requests\FormRequest;
+use Grocelivery\Utils\Requests\FormRequest;
 
 /**
  * Class SendMail

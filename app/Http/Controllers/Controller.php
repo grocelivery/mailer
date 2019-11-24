@@ -2,7 +2,7 @@
 
 namespace Grocelivery\Notifier\Http\Controllers;
 
-use Grocelivery\HttpUtils\Interfaces\JsonResponseInterface as JsonResponse;
+use Grocelivery\Utils\Interfaces\JsonResponseInterface as JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**

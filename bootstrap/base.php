@@ -15,7 +15,7 @@ $app->singleton(
 );
 
 $app->routeMiddleware([
-    'auth' => Grocelivery\HttpUtils\Middleware\Authenticate::class,
+    'auth' => Grocelivery\Utils\Middleware\Authenticate::class,
 ]);
 
 $app->router->group([
@@ -27,15 +27,18 @@ $app->router->group([
 $app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->register(Grocelivery\Notifier\Providers\AppServiceProvider::class);
 $app->register(Grocelivery\Notifier\Providers\MailableServiceProvider::class);
-$app->register(Grocelivery\HttpUtils\Providers\HttpUtilsServiceProvider::class);
+$app->register(Grocelivery\Utils\Providers\UtilsServiceProvider::class);
+$app->register(Illuminate\Redis\RedisServiceProvider::class);
+
+$app->make('queue');
 
 $app->configure('app');
-$app->configure('http-utils');
 $app->configure('mail');
+$app->configure('database');
+$app->configure('grocelivery');
 
 $app->alias('mailer', Illuminate\Mail\Mailer::class);
 $app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
 $app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
-
 
 return $app;

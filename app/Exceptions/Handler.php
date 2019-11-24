@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
-use Grocelivery\HttpUtils\Interfaces\JsonResponseInterface as JsonResponse;
+use Grocelivery\Utils\Interfaces\JsonResponseInterface as JsonResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Grocelivery\HttpUtils\Exceptions\ErrorRenderer;
+use Grocelivery\Utils\Exceptions\ErrorRenderer;
 
 /**
  * Class Handler

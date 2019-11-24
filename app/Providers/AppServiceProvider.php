@@ -2,9 +2,11 @@
 
 namespace Grocelivery\Notifier\Providers;
 
-use Grocelivery\HttpUtils\Interfaces\JsonResponseInterface;
-use Grocelivery\HttpUtils\Responses\JsonResponse;
+use Grocelivery\Utils\Interfaces\JsonResponseInterface;
+use Grocelivery\Utils\Responses\JsonResponse;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Queue\Events\JobFailed;
 
 /**
  * Class AppServiceProvider

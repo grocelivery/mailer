@@ -2,7 +2,7 @@
 
 namespace Grocelivery\Notifier\Http\Controllers;
 
-use Grocelivery\HttpUtils\Interfaces\JsonResponseInterface as JsonResponse;
+use Grocelivery\Utils\Interfaces\JsonResponseInterface as JsonResponse;
 use Grocelivery\Notifier\Contracts\Mailable;
 use Grocelivery\Notifier\Exceptions\InvalidMailableException;
 use Grocelivery\Notifier\Http\Requests\SendMail;
@@ -41,7 +41,7 @@ class MailController extends Controller
         $mailable = $this->resolveMailable($request->attributes->get('mailable'));
         $mailable->setData($request->input('data') ?? []);
 
-        $this->mailer->to($request->input('to'))->send($mailable);
+        $this->mailer->to($request->input('to'))->queue($mailable);
 
         return $this->response->setMessage('Email was sent.');
     }

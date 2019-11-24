@@ -2,7 +2,7 @@
 
 namespace Grocelivery\Notifier\Exceptions;
 
-use Grocelivery\HttpUtils\Exceptions\BadRequestException;
+use Grocelivery\Utils\Exceptions\BadRequestException;
 
 /**
  * Class InvalidMailableException

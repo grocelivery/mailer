@@ -3,14 +3,11 @@
 namespace Grocelivery\Notifier\Mailables;
 
 use Grocelivery\Notifier\Contracts\Mailable as MailableInterface;
-use Grocelivery\Notifier\Exceptions\InvalidMailableDataException;
-use Illuminate\Mail\Mailable as BaseMailable;
 use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable as BaseMailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Validator;
-use Illuminate\Translation\Translator;
-use Grocelivery\Notifier\Services\ValidatorFactory;
 
 /**
  * Class Mailable
