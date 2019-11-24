@@ -1,5 +1,6 @@
 vendor/
 public/storage
+storage/oauth-public.key
 .env
 .idea/
 .editorconfig
