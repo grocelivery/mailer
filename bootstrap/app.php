@@ -6,4 +6,4 @@ require_once __DIR__.'/../vendor/autoload.php';
     dirname(__DIR__)
 ))->bootstrap();
 
-return require __DIR__.'/base.php';
+return require_once __DIR__.'/base.php';

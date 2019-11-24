@@ -2,9 +2,9 @@ version: "3.7"
 
 services:
 
-  notifier-nginx:
+  notifier-webserver:
     image: nginx:alpine
-    container_name: notifier-nginx
+    container_name: notifier-webserver
     working_dir: /application
     volumes:
       - .:/application
@@ -16,11 +16,22 @@ services:
       - SHELL=/bin/ash
 
   php-fpm:
-    image: php:7.3-fpm
+    build: .docker/php
     container_name: notifier-php-fpm
     working_dir: /application
     volumes:
       - .:/application
+
+  redis:
+    image: redis
+    container_name: notifier-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ../data/redis:/data
+    restart: always
+    command:
+      --requirepass ${REDIS_PASSWORD}
 
 networks:
   default:

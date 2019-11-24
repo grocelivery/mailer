@@ -1,19 +1,16 @@
 <?php
 
-namespace Notifier\Exceptions;
+namespace Grocelivery\Notifier\Exceptions;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
-use Notifier\Http\Responses\Response as JsonResponse;
-use Notifier\Interfaces\Http\Responses\ResponseInterface;
+use Grocelivery\Utils\Interfaces\JsonResponseInterface as JsonResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Grocelivery\Utils\Exceptions\ErrorRenderer;
 
 /**
  * Class Handler
@@ -21,8 +18,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class Handler extends ExceptionHandler
 {
-    /** @var JsonResponse */
-    protected $response;
+    /** @var ErrorRenderer */
+    protected $errorRenderer;
     /** @var array */
     protected $dontReport = [
         AuthorizationException::class,
@@ -31,13 +28,9 @@ class Handler extends ExceptionHandler
         ValidationException::class,
     ];
 
-    /**
-     * Handler constructor.
-     * @param JsonResponse $response
-     */
-    public function __construct(JsonResponse $response)
+    public function __construct(ErrorRenderer $errorRenderer)
     {
-        $this->response = $response;
+        $this->errorRenderer = $errorRenderer;
     }
 
     /**
@@ -52,34 +45,10 @@ class Handler extends ExceptionHandler
     /**
      * @param Request $request
      * @param Exception $exception
-     * @return mixed
+     * @return JsonResponse
      */
-    public function render($request, Exception $exception)
+    public function render($request, Exception $exception): JsonResponse
     {
-        $status = Response::HTTP_INTERNAL_SERVER_ERROR;
-        $error = '';
-
-        if ($exception instanceof NotFoundHttpException) {
-            $status = Response::HTTP_NOT_FOUND;
-            $error = 'Route not found.';
-        }
-
-        if ($exception instanceof MethodNotAllowedHttpException) {
-            $status = Response::HTTP_METHOD_NOT_ALLOWED;
-            $error = 'Method not allowed.';
-        }
-
-        if ($exception instanceof InternalServerException) {
-            $status = $exception->getCode();
-            $error = $exception->getMessage();
-        }
-
-        if (empty($error)) {
-            $error = !empty($exception->getMessage()) ? $exception->getMessage() : 'Internal server error.';
-        }
-
-        return $this->response
-            ->setStatusCode($status)
-            ->addError($error);
+        return $this->errorRenderer->render($request, $exception);
     }
 }

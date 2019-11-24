@@ -4,4 +4,4 @@ default:
       paths:
         - "features"
       contexts:
-        - Notifier\Tests\Contexts\FeatureContext
+        - Grocelivery\Notifier\Tests\Contexts\FeatureContext
