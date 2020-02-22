@@ -32,3 +32,6 @@ docker container exec idp-php-fpm php artisan queue:work
 ```
 localhost:20002
 ```
+
+### Aplikacja jest publicznie dostępna na:
+http://api.grocelivery.eu/mail
