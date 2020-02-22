@@ -1,19 +1,15 @@
 <?php
 
-namespace Grocelivery\Notifier\Http\Controllers;
+namespace Grocelivery\Mailer\Http\Controllers;
 
 use Grocelivery\Utils\Interfaces\JsonResponseInterface as JsonResponse;
-use Grocelivery\Notifier\Contracts\Mailable;
-use Grocelivery\Notifier\Exceptions\InvalidMailableException;
-use Grocelivery\Notifier\Http\Requests\SendMail;
-use Grocelivery\Notifier\Mailables\EmailVerification;
-use Illuminate\Contracts\Container\BindingResolutionException;
+use Grocelivery\Mailer\Http\Requests\SendMail;
 use Illuminate\Contracts\Mail\Mailer;
-use Illuminate\Validation\ValidationException;
+use Grocelivery\Mailer\Mailables\Mailable;
 
 /**
  * Class MailController
- * @package Grocelivery\Notifier\Http\Controllers
+ * @package Grocelivery\Mailer\Http\Controllers
  */
 class MailController extends Controller
 {
@@ -34,11 +30,12 @@ class MailController extends Controller
     /**
      * @param SendMail $request
      * @return JsonResponse
-     * @throws InvalidMailableException
      */
     public function sendMail(SendMail $request): JsonResponse
     {
-        $mailable = $this->resolveMailable($request->attributes->get('mailable'));
+        $mailable = new Mailable();
+
+        $mailable->setTemplate($request->input('template'));
         $mailable->setData($request->input('data') ?? []);
 
         $this->mailer->to($request->input('to'))->queue($mailable);
@@ -46,17 +43,4 @@ class MailController extends Controller
         return $this->response->setMessage('Email was sent.');
     }
 
-    /**
-     * @param string $mailableName
-     * @return Mailable
-     * @throws InvalidMailableException
-     */
-    protected function resolveMailable(string $mailableName): Mailable
-    {
-        try {
-            return app()->make("mailable.$mailableName");
-        } catch (BindingResolutionException $exception) {
-            throw new InvalidMailableException();
-        }
-    }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Grocelivery\Notifier\Events;
+namespace Grocelivery\Mailer\Events;
 
 use Illuminate\Queue\SerializesModels;
 
 /**
  * Class Event
- * @package Grocelivery\Notifier\Events
+ * @package Grocelivery\Mailer\Events
  */
 abstract class Event
 {

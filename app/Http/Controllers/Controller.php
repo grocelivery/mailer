@@ -1,14 +1,14 @@
 <?php
 
-namespace Grocelivery\Notifier\Http\Controllers;
+namespace Grocelivery\Mailer\Http\Controllers;
 
 use Grocelivery\Utils\Interfaces\JsonResponseInterface as JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
  * Class Controller
- * @package Notifier\Http\Controllers
- */
+ * @package Mailer\Http\Controllers
+*/
 class Controller extends BaseController
 {
     /** @var JsonResponse */

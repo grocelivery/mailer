@@ -1,6 +1,6 @@
 <?php
 
-namespace Grocelivery\Notifier\Contracts;
+namespace Grocelivery\Mailer\Contracts;
 
 use Illuminate\Contracts\Mail\Mailable as BaseMailable;
 

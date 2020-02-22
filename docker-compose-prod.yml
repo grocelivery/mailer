@@ -26,8 +26,15 @@ services:
   redis:
     image: redis
     container_name: mailer-redis
+    ports:
+      - "6379:6379"
     volumes:
       - ../data/redis:/data
     restart: always
     command:
       --requirepass ${REDIS_PASSWORD}
+
+networks:
+  default:
+    external:
+      name: nginx_proxy

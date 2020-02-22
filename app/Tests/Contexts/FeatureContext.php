@@ -1,17 +1,17 @@
 <?php
 
-namespace Grocelivery\Notifier\Tests\Contexts;
+namespace Grocelivery\Mailer\Tests\Contexts;
 
 use Behat\Behat\Context\Context;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\HttpFoundation\Request;
 use Behat\Gherkin\Node\TableNode;
-use Grocelivery\Notifier\Tests\Traits\InitializingApp;
+use Grocelivery\Mailer\Tests\Traits\InitializingApp;
 use Grocelivery\Utils\Responses\JsonResponse;
 
 /**
  * Class FeatureContext
- * @package Notifier\Tests\Contexts
+ * @package Mailer\Tests\Contexts
  */
 class FeatureContext implements Context
 {

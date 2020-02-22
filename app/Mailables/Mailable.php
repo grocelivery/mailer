@@ -1,81 +1,45 @@
 <?php
 
-namespace Grocelivery\Notifier\Mailables;
+namespace Grocelivery\Mailer\Mailables;
 
-use Grocelivery\Notifier\Contracts\Mailable as MailableInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable as BaseMailable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Validation\Validator;
 
 /**
  * Class Mailable
- * @package Grocelivery\Notifier\Mailables
+ * @package Grocelivery\Mailer\Mailables
  */
-abstract class Mailable extends BaseMailable implements MailableInterface
+class Mailable extends BaseMailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
 
     /** @var array */
     protected $data = [];
+    /** @var string */
+    protected $template;
 
-    /**
-     * @return MailableInterface
-     */
-    public function build(): MailableInterface
+    public function build(): Mailable
     {
-        $this->mutateData();
-        return $this->view('mails.' . $this->getTemplateName(), $this->getData());
+        return $this->view('mails.' . $this->getTemplate(), $this->getData());
     }
 
-    /**
-     * @return array
-     */
+    public function setData(array $data): void
+    {
+        $this->data = $data;
+    }
+
+    public function setTemplate(string $template): void
+    {
+        $this->template = $template;
+    }
+
     public function getData(): array
     {
         return $this->data;
     }
 
-    /**
-     * @param array $data
-     * @return MailableInterface
-     * @throws ValidationException
-     */
-    public function setData(array $data): MailableInterface
+    public function getTemplate(): string
     {
-        $this->validateData($data);
-        $this->data = $data;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDataRules(): array
-    {
-        return [];
-    }
-
-    /**
-     * @param array $data
-     * @throws ValidationException
-     */
-    protected function validateData(array $data): void
-    {
-        /** @var Validator $validator */
-        $validator = app('validator')->make($data, $this->getDataRules());
-
-        if ($validator->fails()) {
-            throw new ValidationException($validator);
-        }
-    }
-
-    /**
-     * @return MailableInterface
-     */
-    protected function mutateData(): MailableInterface
-    {
-        return $this;
+        return $this->template;
     }
 }

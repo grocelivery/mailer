@@ -1,13 +1,12 @@
 <?php
 
-
-namespace Grocelivery\Notifier\Http\Requests;
+namespace Grocelivery\Mailer\Http\Requests;
 
 use Grocelivery\Utils\Requests\FormRequest;
 
 /**
  * Class SendMail
- * @package Grocelivery\Notifier\Http\Requests
+ * @package Grocelivery\Mailer\Http\Requests
  */
 class SendMail extends FormRequest
 {
@@ -18,10 +17,14 @@ class SendMail extends FormRequest
     {
         return [
             'to' => 'required|email',
+            'template' => 'required|string',
             'data' => 'array',
         ];
     }
 
+    /**
+     * @return array
+     */
     public function messages(): array
     {
         return [

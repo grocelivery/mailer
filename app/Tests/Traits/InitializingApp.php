@@ -1,12 +1,12 @@
 <?php
 
-namespace Grocelivery\Notifier\Tests\Traits;
+namespace Grocelivery\Mailer\Tests\Traits;
 
 use Laravel\Lumen\Application;
 
 /**
  * Trait InitializingApp
- * @package Grocelivery\Notifier\Tests\Traits
+ * @package Grocelivery\Mailer\Tests\Traits
  */
 trait InitializingApp
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Grocelivery\Notifier\Exceptions;
+namespace Grocelivery\Mailer\Exceptions;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -14,7 +14,7 @@ use Grocelivery\Utils\Exceptions\ErrorRenderer;
 
 /**
  * Class Handler
- * @package Notifier\Exceptions
+ * @package Mailer\Exceptions
  */
 class Handler extends ExceptionHandler
 {

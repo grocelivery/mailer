@@ -1,13 +1,13 @@
 <?php
 
-namespace Grocelivery\Notifier\Console;
+namespace Grocelivery\Mailer\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
 /**
  * Class Kernel
- * @package Grocelivery\Notifier\Console
+ * @package Grocelivery\Mailer\Console
  */
 class Kernel extends ConsoleKernel
 {

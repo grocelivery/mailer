@@ -1,6 +1,6 @@
 <?php
 
-namespace Grocelivery\Notifier\Providers;
+namespace Grocelivery\Mailer\Providers;
 
 use Grocelivery\Utils\Interfaces\JsonResponseInterface;
 use Grocelivery\Utils\Responses\JsonResponse;
@@ -10,7 +10,7 @@ use Illuminate\Queue\Events\JobFailed;
 
 /**
  * Class AppServiceProvider
- * @package Grocelivery\Notifier\Providers
+ * @package Grocelivery\Mailer\Providers
  */
 class AppServiceProvider extends ServiceProvider
 {

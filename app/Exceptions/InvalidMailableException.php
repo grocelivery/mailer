@@ -1,12 +1,12 @@
 <?php
 
-namespace Grocelivery\Notifier\Exceptions;
+namespace Grocelivery\Mailer\Exceptions;
 
 use Grocelivery\Utils\Exceptions\BadRequestException;
 
 /**
  * Class InvalidMailableException
- * @package Grocelivery\Notifier\Exceptions
+ * @package Grocelivery\Mailer\Exceptions
  */
 class InvalidMailableException extends BadRequestException
 {

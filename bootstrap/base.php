@@ -6,12 +6,12 @@ $app = new Laravel\Lumen\Application(
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    Grocelivery\Notifier\Exceptions\Handler::class
+    Grocelivery\Mailer\Exceptions\Handler::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Grocelivery\Notifier\Console\Kernel::class
+    Grocelivery\Mailer\Console\Kernel::class
 );
 
 $app->routeMiddleware([
@@ -19,14 +19,13 @@ $app->routeMiddleware([
 ]);
 
 $app->router->group([
-    'namespace' => 'Grocelivery\Notifier\Http\Controllers',
+    'namespace' => 'Grocelivery\Mailer\Http\Controllers',
 ], function ($router) {
     require __DIR__ . '/../routes/api.php';
 });
 
 $app->register(Illuminate\Mail\MailServiceProvider::class);
-$app->register(Grocelivery\Notifier\Providers\AppServiceProvider::class);
-$app->register(Grocelivery\Notifier\Providers\MailableServiceProvider::class);
+$app->register(Grocelivery\Mailer\Providers\AppServiceProvider::class);
 $app->register(Grocelivery\Utils\Providers\UtilsServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
 
