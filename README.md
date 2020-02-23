@@ -15,7 +15,7 @@ Konfiguracja pliku .env
  cp .env.example .env
 ```
 
-**_W pliku .env należy ustawić odpowiednie dane dostępu do Redis itp._**
+**_W pliku .env należy ustawić odpowiednie dane dostępu do serwera SMTP, Redis itp._**
 
 Uruchomienie kontenerów docker'owych
 ```
